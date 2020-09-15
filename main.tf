@@ -4,15 +4,15 @@ provider "azurerm" {
   version = "= 2.17"
   features {}
 }
-/*
+
 terraform {
   backend "azurerm" {
-    storage_account_name = "sctstate"
-    resource_group_name = "tfstate"
-    container_name       = "tfstate"
+    storage_account_name = "cloudazuretfstate"
+    resource_group_name  = "tfstate"
+    container_name       = "azuretfstate"
     key                  = "terraform.tfstate"
   }
-}*/
+}
 
 resource "azurerm_resource_group" "group" {
   name     = "vms-group"
