@@ -1,17 +1,29 @@
-/*variable "vms_list" {
-  description = "The list of vms with its configuration"
-  default = [
-    {
-      name   = "vm1Frontend"
-      subnet = module.virtual-network.publicSubnet1.id
-      backendPool = module.lb.lbBackendPool.id
-      zone   = "1"
-    },
-    {
-      name   = "vm2Frontend"
-      subnet = module.virtual-network.publicSubnet2.id
-      backendPool = module.lb.lbBackendPool.id
-      zone   = "2"
-    },
-  ]
-}*/
+variable "mysqlserver_administrator_login" {
+  description = "Administration login for the mysql server"
+  type        = string
+}
+
+variable "mysqlserver_administrator_login_password" {
+  description = "Administration login password for the mysql server"
+  type        = string
+}
+
+variable "scaleset_admin_username_front" {
+  description = "Admin username for the frontend scaleset machines"
+  type        = string
+}
+
+variable "scaleset_admin_password_front" {
+  description = "Admin password for the frontend scaleset machines"
+  type        = string
+}
+
+variable "scaleset_admin_username_back" {
+  description = "Admin username for the backend scaleset machines"
+  type        = string
+}
+
+variable "scaleset_admin_password_back" {
+  description = "Admin password for the backend scaleset machines"
+  type        = string
+}

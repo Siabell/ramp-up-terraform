@@ -51,12 +51,15 @@ module "scale-sets" {
   resource_group_name             = azurerm_resource_group.group.name
   location                        = azurerm_resource_group.group.location
   subnet_id1                      = module.virtual-network.public_subnet1.id
-  subnet_id2                      = module.virtual-network.public_subnet2.id
-  subnets                         = module.virtual-network.subnets
+  subnet_id2                      = module.virtual-network.private_subnet1.id
   ag_backend_address_pool_id      = module.application-gateway.backend_address_pool
   lb_backend_address_pool_id      = module.lb.backend_address_pool
   network_security_group_back_id  = module.network-security-group.network_security_group_back.id
   network_security_group_front_id = module.network-security-group.network_security_group_front.id
+  scaleset_admin_username_front   = var.scaleset_admin_username_front
+  scaleset_admin_password_front   = var.scaleset_admin_password_front
+  scaleset_admin_username_back    = var.scaleset_admin_username_back
+  scaleset_admin_password_back    = var.scaleset_admin_password_back
 }
 
 module "bastion" {
@@ -67,8 +70,10 @@ module "bastion" {
 }
 
 module "database" {
-  source              = "./modules/database"
-  resource_group_name = azurerm_resource_group.group.name
-  location            = azurerm_resource_group.group.location
+  source                                   = "./modules/database"
+  resource_group_name                      = azurerm_resource_group.group.name
+  location                                 = azurerm_resource_group.group.location
+  mysqlserver_administrator_login          = var.mysqlserver_administrator_login
+  mysqlserver_administrator_login_password = var.mysqlserver_administrator_login_password
 }
 

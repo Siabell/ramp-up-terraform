@@ -3,8 +3,8 @@ resource "azurerm_mysql_server" "mysqlserver" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  administrator_login          = "mysqladminun"
-  administrator_login_password = "H@Sh1CoR3!"
+  administrator_login          = var.mysqlserver_administrator_login
+  administrator_login_password = var.mysqlserver_administrator_login_password
 
   sku_name   = "B_Gen5_2"
   storage_mb = 5120

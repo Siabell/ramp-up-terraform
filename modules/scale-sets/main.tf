@@ -4,8 +4,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmscaleset1" {
   location                        = var.location
   sku                             = "Standard_F2"
   instances                       = 2
-  admin_username                  = "adminuser"
-  admin_password                  = "P@ssw0rd1234!"
+  admin_username                  = var.scaleset_admin_username_front
+  admin_password                  = var.scaleset_admin_password_front
   disable_password_authentication = false
   zones                           = [1, 2]
   
@@ -49,8 +49,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmscaleset2" {
   location                        = var.location
   sku                             = "Standard_F2"
   instances                       = 2
-  admin_username                  = "adminuser"
-  admin_password                  = "P@ssw0rd1234!"
+  admin_username                  = var.scaleset_admin_username_back
+  admin_password                  = var.scaleset_admin_password_back
   disable_password_authentication = false
   zones                           = [1, 2]
   zone_balance                    = true
@@ -75,7 +75,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmscaleset2" {
     ip_configuration {
       name                                   = "private1"
       primary                                = true
-      subnet_id                              = var.subnets["private1"].id
+      subnet_id                              = var.subnet_id2
       load_balancer_backend_address_pool_ids = var.lb_backend_address_pool_id
 
     }/*

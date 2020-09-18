@@ -20,3 +20,13 @@ variable "resource_group_name" {
   description = "The name of the resource group"
   type        = string
 }
+
+variable "mysqlserver_administrator_login" {
+  description = "Administration login for the mysql server"
+  type        = string
+}
+
+variable "mysqlserver_administrator_login_password" {
+  description = "Administration login password for the mysql server"
+  type        = string
+}

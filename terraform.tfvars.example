@@ -1,0 +1,6 @@
+mysqlserver_administrator_login          = ""
+mysqlserver_administrator_login_password = ""
+scaleset_admin_username_front            = ""
+scaleset_admin_password_front            = ""
+scaleset_admin_username_back             = ""
+scaleset_admin_password_back             = ""
